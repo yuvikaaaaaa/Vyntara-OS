@@ -33,6 +33,7 @@ Retention policy (configured externally, not enforced by this schema):
 from __future__ import annotations
 
 import uuid
+from datetime import datetime
 from typing import TYPE_CHECKING
 
 from sqlalchemy import (
