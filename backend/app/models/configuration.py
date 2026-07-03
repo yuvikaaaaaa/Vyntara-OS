@@ -522,7 +522,6 @@ class ModelConfiguration(UUIDPrimaryKeyMixin, AuditMixin, Base):
 
 
 # Resolve forward-reference for datetime
-from datetime import datetime as _dt  # noqa: E402
   # noqa: E402
 
 ModelConfiguration.last_health_check_at = mapped_column(  # type: ignore[assignment]

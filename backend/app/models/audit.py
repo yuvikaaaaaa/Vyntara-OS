@@ -39,7 +39,6 @@ from typing import TYPE_CHECKING
 from sqlalchemy import (
     BigInteger,
     Boolean,
-    ForeignKey,
     Index,
     Integer,
     String,
@@ -48,12 +47,12 @@ from sqlalchemy import (
 )
 from sqlalchemy.dialects.postgresql import INET, JSONB
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.orm import Mapped, mapped_column
 
 from app.models.base import Base, TimestampMixin, UUIDPrimaryKeyMixin
 
 if TYPE_CHECKING:
-    from app.models.user import User
+    pass
 
 
 # ---------------------------------------------------------------------------
@@ -225,7 +224,6 @@ class AuditLog(Base):
 
 
 # Fix the forward reference to datetime in the column definition above
-from datetime import datetime as _datetime  # noqa: E402
 
 AuditLog.created_at = mapped_column(  # type: ignore[assignment]
     __import__("sqlalchemy").DateTime(timezone=True),
