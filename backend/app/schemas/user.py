@@ -8,7 +8,7 @@ from pydantic import EmailStr, Field, field_validator, model_validator
 
 from app.core.enums import OAuthProvider, UserRole
 from app.schemas.base import AppModel, AuditedSchema, OrmModel, TimestampedSchema
-from app.schemas.common import NonEmptyStr, PasswordStr, ShortStr, UsernameStr
+from app.schemas.common import PasswordStr, ShortStr, UsernameStr
 
 
 # ---------------------------------------------------------------------------

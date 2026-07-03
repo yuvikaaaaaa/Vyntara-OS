@@ -4,7 +4,7 @@ from __future__ import annotations
 from datetime import datetime
 from uuid import UUID
 
-from pydantic import Field, field_validator
+from pydantic import Field
 
 from app.core.enums import MessageRole, SessionStatus
 from app.schemas.base import AuditedSchema, OrmModel, TimestampedSchema, AppModel

@@ -4,7 +4,7 @@ from __future__ import annotations
 from datetime import datetime
 from uuid import UUID
 
-from pydantic import AnyHttpUrl, Field, field_validator
+from pydantic import Field, field_validator
 
 from app.core.enums import ChunkingStrategy, DocumentStatus, FileType
 from app.schemas.base import AppModel, AuditedSchema, OrmModel, TimestampedSchema

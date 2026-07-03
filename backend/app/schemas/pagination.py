@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar
 
-from pydantic import Field, computed_field, model_validator
+from pydantic import Field
 
 from app.schemas.base import AppModel
 
