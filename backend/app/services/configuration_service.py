@@ -3,13 +3,12 @@ from __future__ import annotations
 
 from uuid import UUID
 
-from app.core.enums import AgentType, ModelProvider, ModelTier
-from app.core.exceptions import AuthorizationError, NotFoundError
+from app.core.enums import AgentType, ModelTier
+from app.core.exceptions import NotFoundError
 from app.models.configuration import ModelConfiguration, PromptTemplate
 from app.schemas.configuration import (
     ModelConfigCreate,
     ModelConfigUpdate,
-    ModelConfigRead,
     PromptRenderRequest,
     PromptRenderResponse,
     PromptTemplateCreate,

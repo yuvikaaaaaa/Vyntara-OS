@@ -4,7 +4,7 @@ from __future__ import annotations
 from uuid import UUID
 
 from app.core.enums import EvaluationRunType, EvaluationStatus
-from app.core.exceptions import AuthorizationError, NotFoundError
+from app.core.exceptions import NotFoundError
 from app.models.evaluation import Benchmark, Evaluation, Feedback
 from app.schemas.evaluation import (
     BenchmarkCreate,

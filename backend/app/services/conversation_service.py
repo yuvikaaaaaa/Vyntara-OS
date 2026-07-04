@@ -4,24 +4,15 @@ from __future__ import annotations
 from uuid import UUID
 
 from app.core.enums import MessageRole, SessionStatus
-from app.core.exceptions import AuthorizationError, ConversationNotFoundError, NotFoundError, SessionNotFoundError
+from app.core.exceptions import AuthorizationError, ConversationNotFoundError, NotFoundError
 from app.models.conversation import Conversation, Message
 from app.models.memory import WorkingMemory
 from app.schemas.conversation import (
     ConversationCreate,
-    ConversationRead,
-    ConversationSummary,
     ConversationUpdate,
     MessageCreate,
-    MessageRead,
 )
 from app.services.base import BaseService
-
-# Satisfy missing exceptions from core
-try:
-    from app.core.exceptions import ConversationNotFoundError  # type: ignore[attr-defined]
-except ImportError:
-    from app.core.exceptions import NotFoundError as ConversationNotFoundError  # type: ignore[assignment]
 
 
 class ConversationService(BaseService):

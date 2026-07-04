@@ -6,7 +6,7 @@ from uuid import UUID
 from app.core.enums import ToolName, ToolStatus
 from app.core.exceptions import NotFoundError, ToolPermissionDeniedError
 from app.models.tool import Tool, ToolExecution, ToolResult
-from app.schemas.tool import ToolCreate, ToolRead, ToolUpdate
+from app.schemas.tool import ToolCreate, ToolUpdate
 from app.services.base import BaseService
 
 

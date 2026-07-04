@@ -6,8 +6,6 @@ from uuid import UUID
 from app.core.enums import UserRole
 from app.core.exceptions import (
     AuthorizationError,
-    DuplicateEmailError,
-    DuplicateUsernameError,
     NotFoundError,
     UserNotFoundError,
 )
@@ -17,7 +15,6 @@ from app.schemas.user import (
     APIKeyRead,
     UserPreferenceRead,
     UserPreferenceSet,
-    UserRead,
     UserSessionRead,
     UserUpdate,
 )

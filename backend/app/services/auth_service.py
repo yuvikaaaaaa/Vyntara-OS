@@ -7,7 +7,6 @@ from uuid import UUID
 from app.core.constants import JWT_ACCESS_TOKEN_EXPIRE_MINUTES, JWT_REFRESH_TOKEN_EXPIRE_DAYS
 from app.core.exceptions import (
     AuthenticationError,
-    ConflictError,
     DuplicateEmailError,
     DuplicateUsernameError,
     RefreshTokenRevokedError,
@@ -20,13 +19,12 @@ from app.core.security import (
     hash_password,
     hash_refresh_token,
     verify_password,
-    verify_refresh_token_hash,
     generate_api_key,
     get_api_key_prefix,
     verify_api_key,
     generate_oauth_state,
 )
-from app.models.user import APIKey, OAuthAccount, User, UserSession
+from app.models.user import APIKey, User, UserSession
 from app.schemas.common import TokenPair
 from app.schemas.user import APIKeyCreate, APIKeyCreated, LoginRequest, RegisterRequest
 from app.services.base import BaseService

@@ -1,24 +1,22 @@
 """IOS — Knowledge Service."""
 from __future__ import annotations
 
-import uuid
 from uuid import UUID
 
-from app.core.enums import ChunkingStrategy, DocumentStatus, FileType
+from app.core.enums import DocumentStatus, FileType
 from app.core.exceptions import AuthorizationError, DocumentNotFoundError, NotFoundError
 from app.models.knowledge import Citation, EmbeddingMetadata, KnowledgeChunk, KnowledgeDocument
 from app.schemas.knowledge import (
     CitationCreate,
     DocumentIngestRequest,
     DocumentUpdate,
-    KnowledgeDocumentRead,
 )
 from app.services.base import BaseService
 
 try:
     from app.core.exceptions import DocumentNotFoundError  # type: ignore[attr-defined]
 except ImportError:
-    from app.core.exceptions import NotFoundError as DocumentNotFoundError  # type: ignore[assignment]
+    pass  # type: ignore[assignment]
 
 
 class KnowledgeService(BaseService):

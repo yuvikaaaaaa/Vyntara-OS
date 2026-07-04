@@ -8,8 +8,6 @@ from app.core.exceptions import AuthorizationError, NotFoundError
 from app.models.memory import EpisodicMemory, MemorySnapshot, SemanticMemory, WorkingMemory
 from app.schemas.memory import (
     EpisodicMemoryCreate,
-    MemorySearchRequest,
-    MemorySearchResult,
     SemanticMemoryCreate,
     SemanticMemoryUpdate,
     WorkingMemoryUpdate,
@@ -257,7 +255,8 @@ class MemoryService(BaseService):
         semantic_count: int | None = None,
         notes: str | None = None,
     ) -> MemorySnapshot:
-        import hashlib, json
+        import hashlib
+        import json
         raw = json.dumps(state_json, sort_keys=True, default=str)
         checksum = hashlib.sha256(raw.encode()).hexdigest()
         async with self._transaction() as uow:
