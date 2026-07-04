@@ -4,7 +4,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from uuid import UUID
 
-from sqlalchemy import and_, select, update
+from sqlalchemy import select, update
 
 from app.models.user import APIKey, OAuthAccount, User, UserPreference, UserSession
 from app.repositories.base import BaseRepository

@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from uuid import UUID
 
-from sqlalchemy import and_, func, select, update
+from sqlalchemy import func, select, update
 
 from app.core.enums import ApprovalStatus
 from app.models.workflow import PlannerState, Workflow
