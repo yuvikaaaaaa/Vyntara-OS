@@ -13,11 +13,6 @@ from app.schemas.knowledge import (
 )
 from app.services.base import BaseService
 
-try:
-    from app.core.exceptions import DocumentNotFoundError  # type: ignore[attr-defined]
-except ImportError:
-    pass  # type: ignore[assignment]
-
 
 class KnowledgeService(BaseService):
     """Orchestrates document ingestion lifecycle and chunk management."""
