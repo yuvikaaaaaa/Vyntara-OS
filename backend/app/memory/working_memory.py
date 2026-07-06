@@ -15,7 +15,6 @@ from app.core.constants import (
 )
 from app.memory.base import BaseMemoryLayer
 from app.memory.exceptions import (
-    MemoryNotFoundError,
     WorkingMemoryError,
     WorkingMemoryFullError,
 )
