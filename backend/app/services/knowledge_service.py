@@ -4,7 +4,7 @@ from __future__ import annotations
 from uuid import UUID
 
 from app.core.enums import DocumentStatus, FileType
-from app.core.exceptions import AuthorizationError, DocumentNotFoundError, NotFoundError
+from app.core.exceptions import AuthorizationError, NotFoundError
 from app.models.knowledge import Citation, EmbeddingMetadata, KnowledgeChunk, KnowledgeDocument
 from app.schemas.knowledge import (
     CitationCreate,

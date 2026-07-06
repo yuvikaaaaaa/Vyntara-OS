@@ -4,7 +4,7 @@ from __future__ import annotations
 from uuid import UUID
 
 from app.core.enums import MessageRole, SessionStatus
-from app.core.exceptions import AuthorizationError, ConversationNotFoundError, NotFoundError
+from app.core.exceptions import AuthorizationError, NotFoundError
 from app.models.conversation import Conversation, Message
 from app.models.memory import WorkingMemory
 from app.schemas.conversation import (
