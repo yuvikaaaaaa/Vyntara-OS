@@ -9,6 +9,7 @@ Usage::
     from app.ai_core import ChatRequest, ChatResponse, RoutingContext
     from app.ai_core import ModelCapability, ModelTierLabel
 """
+from app.ai_core.router.model_router import ModelRouter, ProviderRegistry
 
 # Types
 from app.ai_core.types import (
@@ -51,13 +52,10 @@ from app.ai_core.interfaces import IEmbeddingProvider, ILanguageModelProvider
 from app.ai_core.providers.base_provider import BaseEmbeddingProvider, BaseProvider
 from app.ai_core.providers.ollama_provider import OllamaProvider
 """IOS AI Core — Providers sub-package."""
-from app.ai_core.providers.base_provider import BaseEmbeddingProvider, BaseProvider
-from app.ai_core.providers.ollama_provider import OllamaProvider
 
 __all__ = ["BaseProvider", "BaseEmbeddingProvider", "OllamaProvider"]
 
 # Router
-from app.ai_core.router.model_router import ModelRouter, ProviderRegistry
 
 __all__ = [
     # Types

@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import asyncio
-from typing import Any
 
 from app.ai_core.base import AICoreMixin
 from app.ai_core.exceptions import (
@@ -19,12 +18,9 @@ from app.ai_core.types import (
     ChatStream,
     EmbeddingRequest,
     EmbeddingResponse,
-    ModelCapability,
     ModelInfo,
-    ModelTierLabel,
     ProviderHealth,
     RoutingContext,
-    StreamChunk,
 )
 
 

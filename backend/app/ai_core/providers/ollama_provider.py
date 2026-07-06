@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import json
-from typing import AsyncIterator
 
 import httpx
 
@@ -16,7 +15,6 @@ from app.ai_core.exceptions import (
 )
 from app.ai_core.providers.base_provider import BaseEmbeddingProvider, BaseProvider
 from app.ai_core.types import (
-    ChatMessage,
     ChatRequest,
     ChatResponse,
     ChatStream,
@@ -400,11 +398,6 @@ class OllamaProvider(BaseProvider, BaseEmbeddingProvider):
             OLLAMA_CONTEXT_LARGE,
             OLLAMA_CONTEXT_MEDIUM,
             OLLAMA_CONTEXT_SMALL,
-            OLLAMA_MODEL_CODE,
-            OLLAMA_MODEL_LARGE,
-            OLLAMA_MODEL_MEDIUM,
-            OLLAMA_MODEL_SMALL,
-            OLLAMA_MODEL_VISION,
         )
         return [
             ModelInfo(

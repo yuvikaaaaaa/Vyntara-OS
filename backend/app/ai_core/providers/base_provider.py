@@ -3,16 +3,6 @@ from __future__ import annotations
 
 from app.ai_core.base import AICoreMixin
 from app.ai_core.interfaces import IEmbeddingProvider, ILanguageModelProvider
-from app.ai_core.types import (
-    ChatRequest,
-    ChatResponse,
-    ChatStream,
-    EmbeddingRequest,
-    EmbeddingResponse,
-    ModelInfo,
-    ProviderHealth,
-    RoutingContext,
-)
 
 
 class BaseProvider(AICoreMixin, ILanguageModelProvider):
