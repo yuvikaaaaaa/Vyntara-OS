@@ -5,7 +5,7 @@ import json
 from typing import Any
 from uuid import UUID
 
-from redis import asyncio as aioredis
+import redis.asyncio as aioredis
 
 from app.core.constants import (
     REDIS_NS_WORKING_MEMORY,
