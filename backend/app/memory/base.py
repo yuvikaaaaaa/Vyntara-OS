@@ -4,13 +4,12 @@ from __future__ import annotations
 import hashlib
 import math
 from datetime import datetime, timezone
-from uuid import UUID
 
 from app.core.logging import get_logger
 from app.core.telemetry import create_async_span
-from app.memory.exceptions import MemoryExpiredError, MemoryNotFoundError
+from app.memory.exceptions import MemoryExpiredError
 from app.memory.interfaces import IMemoryLayer
-from app.memory.types import MemoryLayerType, MemoryRecord, ScoredMemory
+from app.memory.types import MemoryRecord, ScoredMemory
 
 
 class BaseMemoryLayer(IMemoryLayer):

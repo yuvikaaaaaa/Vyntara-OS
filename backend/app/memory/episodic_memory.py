@@ -2,13 +2,12 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
-from uuid import UUID, uuid4
+from uuid import UUID
 
 from app.core.constants import QDRANT_COLLECTION_EPISODIC_MEMORIES
 from app.memory.base import BaseMemoryLayer
 from app.memory.interfaces import IEmbeddingGateway
 from app.memory.types import (
-    EpisodicRecord,
     MemoryLayerType,
     MemoryOutcome,
     MemoryRecord,
@@ -104,9 +103,8 @@ class EpisodicMemory(BaseMemoryLayer):
 
     async def delete(self, record_id: UUID, user_id: UUID) -> None:
         async with self._span("delete", record_id=str(record_id)):
-            ep = await self._svc.get_episode(record_id, user_id)
+            await self._svc.get_episode(record_id, user_id)
             # Soft-delete via service (which calls repository.soft_delete)
-            from app.core.enums import MemoryOutcome as Svc
             # Mark as deleted via service update
             self._log.info("episodic_record_deleted", record_id=str(record_id))
 
