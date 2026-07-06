@@ -8,7 +8,6 @@ from app.memory.types import (
     MemoryLayerType,
     MemoryRecord,
     MemorySearchRequest,
-    SearchStrategy,
     ScoredMemory,
 )
 
