@@ -5,7 +5,6 @@ from datetime import datetime, timezone
 from uuid import UUID, uuid4
 
 from app.core.constants import QDRANT_COLLECTION_EPISODIC_MEMORIES
-from app.core.enums import MemoryOutcome as ServiceOutcome
 from app.memory.base import BaseMemoryLayer
 from app.memory.exceptions import EpisodicMemoryError, MemoryNotFoundError
 from app.memory.interfaces import IEmbeddingGateway
