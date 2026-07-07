@@ -161,7 +161,7 @@ class MemorySnapshot:
         self,
         snapshot_id: UUID,
         user_id: UUID,
-        target_layer: "IMemoryLayer",  # type: ignore[name-defined]
+        target_layer: Any,
     ) -> SnapshotRestoreResult:
         """
         Restore memory records from a snapshot into a target layer.
