@@ -4,7 +4,6 @@ from __future__ import annotations
 import hashlib
 import json
 from datetime import datetime, timezone
-from typing import Protocol
 from uuid import UUID
 
 from app.core.enums import MemoryType
@@ -18,13 +17,6 @@ from app.memory.types import (
     SnapshotRestoreResult,
 )
 from app.services.memory_service import MemoryService
-
-
-class IMemoryLayer(Protocol):
-    layer_type: MemoryLayerType
-
-    async def write(self, record: MemoryRecord) -> None:
-        ...
 
 logger = get_logger(__name__)
 
