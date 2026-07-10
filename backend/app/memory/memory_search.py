@@ -2,16 +2,14 @@
 from __future__ import annotations
 
 import asyncio
-from datetime import datetime
 from uuid import UUID
 
 from app.core.logging import get_logger
 from app.core.telemetry import create_async_span
 from app.memory.interfaces import IMemoryLayer
-from app.memory.memory_ranker import MemoryRanker, RankingWeights
+from app.memory.memory_ranker import MemoryRanker
 from app.memory.types import (
     MemoryLayerType,
-    MemoryRecord,
     MemorySearchRequest,
     MemorySearchResponse,
     MemorySearchResult,

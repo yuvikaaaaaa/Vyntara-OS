@@ -1,8 +1,7 @@
 """IOS Memory — Memory Compactor."""
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from dataclasses import dataclass
 from typing import TYPE_CHECKING
 from uuid import UUID
 
@@ -13,7 +12,6 @@ from app.memory.interfaces import IMemoryLayer
 from app.memory.types import (
     CompactionResult,
     MemoryLayerType,
-    MemoryPriority,
     MemoryRecord,
 )
 
@@ -349,7 +347,7 @@ class MemoryCompactor:
         try:
             from app.memory.semantic_memory import SemanticMemory
             if isinstance(self._semantic, SemanticMemory):
-                count = await self._semantic.prune_expired(user_id)
+                await self._semantic.prune_expired(user_id)
                 return []   # IDs not returned by prune_expired; count only
         except Exception as exc:
             logger.warning("prune_expired_failed", exc=str(exc))
