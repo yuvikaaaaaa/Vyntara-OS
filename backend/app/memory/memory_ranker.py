@@ -2,11 +2,10 @@
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime, timezone
 
-from app.memory.base import BaseMemoryLayer
-from app.memory.types import MemoryRecord, ScoredMemory
+from app.memory.types import ScoredMemory
 
 
 @dataclass

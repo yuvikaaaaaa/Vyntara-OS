@@ -10,7 +10,6 @@ from app.memory.base import BaseMemoryLayer
 from app.memory.exceptions import (
     DuplicateMemoryError,
     MemoryNotFoundError,
-    SemanticMemoryError,
 )
 from app.memory.interfaces import IEmbeddingGateway
 from app.memory.types import (
