@@ -65,7 +65,7 @@ class MemorySearch:
         async with create_async_span(
             "memory_search.search",
             attributes={
-                "layers": ",".join(l.value for l in request.layers),
+                "layers": ",".join(layer.value for layer in request.layers),
                 "strategy": request.strategy.value,
                 "top_k": str(request.top_k),
             },
