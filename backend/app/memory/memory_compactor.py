@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
+from typing import TYPE_CHECKING
 from uuid import UUID
 
 from app.core.logging import get_logger
@@ -15,6 +16,9 @@ from app.memory.types import (
     MemoryPriority,
     MemoryRecord,
 )
+
+if TYPE_CHECKING:
+    from app.memory.working_memory import WorkingMemory
 
 logger = get_logger(__name__)
 
