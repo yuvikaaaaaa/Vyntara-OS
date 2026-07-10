@@ -12,12 +12,13 @@ from app.memory.types import (
     MemoryLayerType,
     MemoryRecord,
     MemorySearchRequest,
-from app.memory.working_memory import WorkingMemory
     SnapshotMeta,
     SnapshotRestoreResult,
     WorkingMemorySlot,
     WorkingMemoryState,
 )
+from app.memory.working_memory import WorkingMemory
+
 
 logger = get_logger(__name__)
 
