@@ -11,7 +11,6 @@ from app.memory.memory_snapshot import MemorySnapshot
 from app.memory.types import (
     MemoryLayerType,
     MemoryRecord,
-    MemorySearchRequest,
     SnapshotMeta,
     SnapshotRestoreResult,
     WorkingMemorySlot,
