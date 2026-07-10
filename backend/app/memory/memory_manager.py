@@ -12,6 +12,7 @@ from app.memory.types import (
     MemoryLayerType,
     MemoryRecord,
     MemorySearchRequest,
+from app.memory.working_memory import WorkingMemory
     SnapshotMeta,
     SnapshotRestoreResult,
     WorkingMemorySlot,
