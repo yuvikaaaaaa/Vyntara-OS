@@ -5,7 +5,6 @@ from app.core.exceptions import IosBaseException
 
 
 class MemoryError(IosBaseException):
-    """Base for all memory module errors."""
     http_status = 500
     code = "MEMORY_ERROR"
 
@@ -15,7 +14,6 @@ class WorkingMemoryError(MemoryError):
 
 
 class WorkingMemoryFullError(WorkingMemoryError):
-    """Token budget exceeded and compaction could not free enough space."""
     code = "WORKING_MEMORY_FULL"
 
 
@@ -55,7 +53,6 @@ class SearchError(MemoryError):
 
 
 class EmbeddingRequiredError(MemoryError):
-    """Operation requires an embedding provider that is not configured."""
     code = "EMBEDDING_PROVIDER_REQUIRED"
 
 
