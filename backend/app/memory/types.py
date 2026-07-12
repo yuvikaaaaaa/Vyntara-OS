@@ -8,11 +8,6 @@ from typing import Any
 from uuid import UUID
 
 
-# ---------------------------------------------------------------------------
-# Enumerations
-# ---------------------------------------------------------------------------
-
-
 class MemoryLayerType(str, Enum):
     WORKING = "working"
     EPISODIC = "episodic"
@@ -34,32 +29,20 @@ class MemoryOutcome(str, Enum):
 
 
 class SearchStrategy(str, Enum):
-    SEMANTIC = "semantic"      # vector similarity only
-    RECENCY = "recency"        # chronological order only
-    HYBRID = "hybrid"          # score = semantic * weight + recency * (1-weight)
-    IMPORTANCE = "importance"  # importance score only
-
-
-# ---------------------------------------------------------------------------
-# Core memory record
-# ---------------------------------------------------------------------------
+    SEMANTIC = "semantic"
+    RECENCY = "recency"
+    HYBRID = "hybrid"
+    IMPORTANCE = "importance"
 
 
 @dataclass
 class MemoryRecord:
-    """
-    Canonical in-memory representation of any memory record.
-
-    Returned by all memory layer read operations.
-    Consumed by the ranker, compactor, and search engine.
-    """
-
     id: UUID
     layer: MemoryLayerType
     user_id: UUID
     content: str
     summary: str | None = None
-    importance: float = 0.5          # 0.0 – 1.0
+    importance: float = 0.5
     priority: MemoryPriority = MemoryPriority.NORMAL
     created_at: datetime = field(default_factory=lambda: datetime.now(tz=timezone.utc))
     last_accessed: datetime | None = None
@@ -67,7 +50,7 @@ class MemoryRecord:
     expires_at: datetime | None = None
     tags: list[str] = field(default_factory=list)
     qdrant_point_id: UUID | None = None
-    source_id: UUID | None = None    # originating task / conversation / document
+    source_id: UUID | None = None
     metadata: dict[str, Any] = field(default_factory=dict)
 
     @property
@@ -79,35 +62,24 @@ class MemoryRecord:
 
 @dataclass
 class ScoredMemory:
-    """A MemoryRecord paired with a composite retrieval score."""
-
     record: MemoryRecord
-    score: float                    # composite score produced by MemoryRanker
+    score: float
     semantic_score: float | None = None
     recency_score: float | None = None
     importance_score: float | None = None
 
 
-# ---------------------------------------------------------------------------
-# Working memory types
-# ---------------------------------------------------------------------------
-
-
 @dataclass
 class WorkingMemorySlot:
-    """A single key-value slot in working memory."""
-
     key: str
     value: Any
     token_estimate: int = 0
     priority: MemoryPriority = MemoryPriority.NORMAL
-    pinned: bool = False            # pinned slots are never evicted by compactor
+    pinned: bool = False
 
 
 @dataclass
 class WorkingMemoryState:
-    """Complete snapshot of working memory at a point in time."""
-
     conversation_id: UUID
     user_id: UUID
     slots: dict[str, WorkingMemorySlot] = field(default_factory=dict)
@@ -117,15 +89,8 @@ class WorkingMemoryState:
     summary: str | None = None
 
 
-# ---------------------------------------------------------------------------
-# Episodic memory types
-# ---------------------------------------------------------------------------
-
-
 @dataclass
 class EpisodicRecord:
-    """Rich execution experience record."""
-
     id: UUID
     user_id: UUID
     task_description: str
@@ -144,15 +109,8 @@ class EpisodicRecord:
     conversation_id: UUID | None = None
 
 
-# ---------------------------------------------------------------------------
-# Search request / response
-# ---------------------------------------------------------------------------
-
-
 @dataclass
 class MemorySearchRequest:
-    """Cross-layer memory search parameters."""
-
     query: str
     user_id: UUID
     layers: list[MemoryLayerType] = field(
@@ -161,58 +119,40 @@ class MemorySearchRequest:
     strategy: SearchStrategy = SearchStrategy.HYBRID
     top_k: int = 5
     min_score: float = 0.0
-    semantic_weight: float = 0.7    # weight of semantic score in hybrid
+    semantic_weight: float = 0.7
     tags_filter: list[str] | None = None
     exclude_expired: bool = True
 
 
 @dataclass
 class MemorySearchResult:
-    """Single search result with provenance."""
-
     record: ScoredMemory
     layer: MemoryLayerType
-    highlighted_content: str | None = None   # excerpt relevant to the query
+    highlighted_content: str | None = None
 
 
 @dataclass
 class MemorySearchResponse:
-    """Full cross-layer search response."""
-
     results: list[MemorySearchResult]
     total_found: int
     layers_searched: list[MemoryLayerType]
     query: str
 
 
-# ---------------------------------------------------------------------------
-# Compaction types
-# ---------------------------------------------------------------------------
-
-
 @dataclass
 class CompactionResult:
-    """Result of a memory compaction / compression pass."""
-
     layer: MemoryLayerType
     records_before: int
     records_after: int
     tokens_before: int
     tokens_after: int
     evicted_ids: list[UUID] = field(default_factory=list)
-    promoted_ids: list[UUID] = field(default_factory=list)   # working → episodic
+    promoted_ids: list[UUID] = field(default_factory=list)
     summary_generated: bool = False
-
-
-# ---------------------------------------------------------------------------
-# Snapshot types
-# ---------------------------------------------------------------------------
 
 
 @dataclass
 class SnapshotMeta:
-    """Lightweight snapshot descriptor (without full state_json)."""
-
     id: UUID
     user_id: UUID
     layer: MemoryLayerType
@@ -225,10 +165,16 @@ class SnapshotMeta:
 
 @dataclass
 class SnapshotRestoreResult:
-    """Result returned after restoring a snapshot."""
-
     snapshot_id: UUID
     layer: MemoryLayerType
     records_restored: int
     success: bool
     error: str | None = None
+
+
+@dataclass
+class RetentionPolicy:
+    max_records: int = 10_000
+    min_importance: float = 0.1
+    max_age_days: float | None = None
+    deduplicate: bool = True
