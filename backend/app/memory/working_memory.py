@@ -13,7 +13,7 @@ from app.core.constants import (
     WORKING_MEMORY_TTL_SECONDS,
 )
 from app.memory.base import BaseMemoryLayer
-from app.memory.exceptions import MemoryNotFoundError, WorkingMemoryError, WorkingMemoryFullError
+from app.memory.exceptions import WorkingMemoryError, WorkingMemoryFullError
 from app.memory.types import (
     MemoryLayerType,
     MemoryPriority,
