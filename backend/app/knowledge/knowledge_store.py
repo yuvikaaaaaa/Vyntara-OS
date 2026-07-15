@@ -2,7 +2,13 @@
 from __future__ import annotations
 
 
-from neo4j import AsyncDriver
+from typing import Any
+
+# neo4j may not be available in some analysis/dev environments; fall back to Any for typing
+try:
+    from neo4j import AsyncDriver  # type: ignore
+except Exception:  # pragma: no cover - fallback for environments without neo4j
+    AsyncDriver = Any
 
 from app.core.logging import get_logger
 from app.database.neo4j import (
