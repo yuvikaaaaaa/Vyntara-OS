@@ -2,12 +2,13 @@
 from __future__ import annotations
 
 
-from typing import Any
+from typing import Any, TYPE_CHECKING
 
-# neo4j may not be available in some analysis/dev environments; fall back to Any for typing
-try:
+# neo4j may not be available in some analysis/dev environments; only import
+# AsyncDriver for type checking at development time.
+if TYPE_CHECKING:
     from neo4j import AsyncDriver  # type: ignore
-except Exception:  # pragma: no cover - fallback for environments without neo4j
+else:
     AsyncDriver = Any
 
 from app.core.logging import get_logger
