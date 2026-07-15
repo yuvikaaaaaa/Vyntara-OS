@@ -118,7 +118,7 @@ class KnowledgeStore(IEntityStore, IRelationStore, IGraphTraverser):
         self, query: str, *, labels: list[EntityLabel] | None = None, limit: int = 10
     ) -> list[KnowledgeEntity]:
         try:
-            label_filter = [l.value for l in labels] if labels else None
+            label_filter = [label.value for label in labels] if labels else None
             results = await fulltext_search_entities(
                 self._driver, query, limit=limit, labels=label_filter
             )
