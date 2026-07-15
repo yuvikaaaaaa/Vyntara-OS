@@ -7,7 +7,7 @@ import unicodedata
 from app.core.logging import get_logger
 from app.core.telemetry import create_async_span
 from app.knowledge.exceptions import ConfidenceTooLowError
-from app.knowledge.types import KnowledgeEntity, ValidationResult, ValidationSeverity, ValidationIssue
+from app.knowledge.types import ValidationResult, ValidationSeverity, ValidationIssue
 
 
 class BaseKnowledge:

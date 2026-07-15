@@ -5,17 +5,12 @@ from abc import ABC, abstractmethod
 
 from app.knowledge.types import (
     EntityLabel,
-    GraphSnapshot,
-    IndexStats,
     KnowledgeEntity,
     KnowledgeRelation,
-    KnowledgeSearchRequest,
-    KnowledgeSearchResponse,
     PathResult,
     RelationType,
     TraversalDirection,
     TraversalResult,
-    ValidationResult,
 )
 
 
