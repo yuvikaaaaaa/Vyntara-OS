@@ -1,7 +1,6 @@
 """IOS Knowledge — Knowledge Store (Neo4j-backed)."""
 from __future__ import annotations
 
-from datetime import datetime, timezone
 
 from neo4j import AsyncDriver
 

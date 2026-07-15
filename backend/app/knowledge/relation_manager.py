@@ -5,7 +5,6 @@ from datetime import datetime, timezone
 
 from app.knowledge.base import BaseKnowledge
 from app.knowledge.exceptions import (
-    InvalidRelationTypeError,
     KnowledgeValidationError,
     RelationAlreadyExistsError,
     RelationNotFoundError,

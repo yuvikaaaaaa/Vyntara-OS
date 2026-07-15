@@ -147,7 +147,7 @@ class KnowledgeIndexer(BaseKnowledge):
 
     async def _embed_one(self, entity: KnowledgeEntity) -> None:
         try:
-            vector = await self._embed.embed_entity(entity)
+            await self._embed.embed_entity(entity)
             entity.embedding_id = entity.id  # 1:1 mapping convention
             await self._entities.upsert(entity)
             self._log.debug("entity_embedded", entity_id=entity.id)
