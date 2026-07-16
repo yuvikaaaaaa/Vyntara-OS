@@ -4,7 +4,7 @@ from __future__ import annotations
 from app.core.logging import get_logger
 from app.core.telemetry import create_async_span
 from app.retrieval.interfaces import IRetriever
-from app.retrieval.types import MetadataFilter, RetrievalSource, RetrievedItem
+from app.retrieval.types import MetadataFilter, RetrievedItem
 
 
 class BaseRetriever(IRetriever):

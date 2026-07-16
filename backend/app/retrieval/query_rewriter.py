@@ -5,7 +5,6 @@ from app.ai_core.router.model_router import ModelRouter
 from app.ai_core.types import ChatMessage, ChatRequest, GenerationConfig, ModelCapability, RoutingContext
 from app.core.logging import get_logger
 from app.core.telemetry import create_async_span
-from app.retrieval.exceptions import QueryRewriteError
 from app.retrieval.interfaces import IQueryRewriter
 from app.retrieval.types import QueryRewriteResult, QueryRewriteStrategy
 
