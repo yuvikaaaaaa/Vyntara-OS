@@ -11,6 +11,7 @@ import redis.asyncio as aioredis
 
 from app.core.logging import get_logger
 from app.core.telemetry import create_async_span
+from app.retrieval.exceptions import RetrievalCacheError
 from app.retrieval.interfaces import IRetrievalCacheBackend
 from app.retrieval.types import (
     MetadataFilter,
