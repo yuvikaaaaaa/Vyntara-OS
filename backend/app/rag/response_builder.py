@@ -6,7 +6,6 @@ from app.rag.base import BaseRAGComponent
 from app.rag.exceptions import ResponseBuildError
 from app.rag.types import (
     CitedResponse,
-    GroundingLevel,
     GroundingResult,
     HallucinationReport,
     RAGRequest,

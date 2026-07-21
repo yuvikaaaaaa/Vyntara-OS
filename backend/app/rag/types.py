@@ -7,7 +7,7 @@ from enum import Enum
 from typing import Any
 from uuid import UUID
 
-from app.retrieval.types import BuiltContext, RerankedItem
+from app.retrieval.types import BuiltContext
 
 
 # ---------------------------------------------------------------------------

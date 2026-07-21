@@ -7,7 +7,7 @@ from app.rag.base import BaseRAGComponent
 from app.rag.exceptions import CitationError
 from app.rag.interfaces import ICitationManager
 from app.rag.types import Citation, CitedResponse, ClaimVerdict, GroundingResult
-from app.retrieval.types import BuiltContext, RerankedItem
+from app.retrieval.types import BuiltContext
 
 # Matches inline citation markers like [1], [2], [12] emitted by the LLM
 # per PromptAssembler's citation instruction.

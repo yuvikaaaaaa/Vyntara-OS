@@ -9,7 +9,6 @@ from app.rag.grounding import Grounding
 from app.rag.interfaces import IGroundingChecker, IHallucinationChecker
 from app.rag.types import (
     ClaimVerdict,
-    GroundingLevel,
     GroundingResult,
     HallucinationFlag,
     HallucinationReport,

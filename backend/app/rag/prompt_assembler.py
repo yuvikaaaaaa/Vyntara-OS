@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from app.rag.base import BaseRAGComponent
-from app.rag.exceptions import PromptAssemblyError, PromptBudgetExceededError
+from app.rag.exceptions import PromptAssemblyError
 from app.rag.interfaces import IPromptAssembler
 from app.rag.types import AssembledPrompt, PromptSection, RAGRequest
 from app.retrieval.types import BuiltContext
