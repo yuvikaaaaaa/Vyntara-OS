@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import json
 import re
-from datetime import datetime, timezone
+from datetime import datetime
 
 from app.ai_core.router.model_router import ModelRouter
 from app.ai_core.types import ChatMessage, ChatRequest, GenerationConfig, ModelCapability, RoutingContext

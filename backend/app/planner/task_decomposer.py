@@ -9,7 +9,7 @@ from app.ai_core.types import ChatMessage, ChatRequest, GenerationConfig, ModelC
 from app.planner.base import BasePlanner
 from app.planner.exceptions import TaskDecompositionError
 from app.planner.interfaces import ITaskDecomposer
-from app.planner.types import ParsedGoal, Task, TaskPriority, TaskType
+from app.planner.types import ParsedGoal, Task, TaskType
 
 _DECOMPOSE_INSTRUCTIONS = """Decompose the following objective into a minimal set of \
 atomic, independently-executable tasks. Each task should be small enough to be handled \

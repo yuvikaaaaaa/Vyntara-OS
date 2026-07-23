@@ -4,8 +4,6 @@ from __future__ import annotations
 from app.planner.base import BasePlanner
 from app.planner.exceptions import InvalidPlanError, PlanningError
 from app.planner.interfaces import (
-    IConstraintSolver,
-    IDependencyGraph,
     IExecutionPlanner,
     IGoalParser,
     IPlanGenerator,

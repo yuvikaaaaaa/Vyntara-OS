@@ -3,7 +3,6 @@ from __future__ import annotations
 
 from app.planner.base import BasePlanner
 from app.planner.dependency_graph import DependencyGraph
-from app.planner.exceptions import PlanValidationError
 from app.planner.interfaces import IConstraintSolver, IPlanValidator
 from app.planner.types import ExecutionPlan, PlanValidationResult, ValidationSeverity
 

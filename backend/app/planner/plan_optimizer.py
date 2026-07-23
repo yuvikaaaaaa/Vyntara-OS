@@ -7,7 +7,7 @@ from app.planner.base import BasePlanner
 from app.planner.dependency_graph import DependencyGraph
 from app.planner.exceptions import PlanOptimizationError
 from app.planner.interfaces import IPlanOptimizer
-from app.planner.types import ExecutionPlan, Task, TaskPriority
+from app.planner.types import ExecutionPlan, Task
 
 # Tasks below this estimated duration are candidates for merging with an
 # adjacent low-cost task on the same critical-path batch, reducing
