@@ -1,42 +1,154 @@
-import ast, os, sys
+"""IOS Planner — Public API.
 
-d = 'backend/app/planner'
-errors = []
-files = []
+The Planning Engine converts natural-language goals into validated,
+optimized, execution-ready plans.
 
-for f in sorted(os.listdir(d)):
-    if not f.endswith('.py'):
-        continue
-    path = os.path.join(d, f)
-    src = open(path).read()
-    lines = len(src.splitlines())
-    files.append((f, lines))
-    try:
-        tree = ast.parse(src)
-        dup_found = False
-        for node in ast.walk(tree):
-            if isinstance(node, ast.ClassDef):
-                names = [n.name for n in node.body if isinstance(n, (ast.AsyncFunctionDef, ast.FunctionDef))]
-                dupes = {n for n in names if names.count(n) > 1}
-                if dupes:
-                    print(f'  ⚠️  {f}: duplicate methods in {node.name}: {dupes}')
-                    dup_found = True
-        status = '✅' if not dup_found else '⚠️ '
-        print(f'  {status}  {f:<26} ({lines:>4} lines)')
-    except SyntaxError as e:
-        errors.append((f, e))
-        print(f'  ❌  {f}: {e}')
+It does NOT execute anything — that is the responsibility of the future
+Agent Engine, which consumes ExecutionPlan / ExecutionStep objects
+produced here.
 
-total_lines = sum(l for _, l in files)
-print()
-print(f'Files : {len(files)}/14')
-print(f'Lines : {total_lines:,}')
-print(f'Syntax Errors: {len(errors)}')
-print()
-if len(files) == 14 and not errors:
-    print('backend/app/planner — COMPLETE ✅')
-else:
-    if len(files) != 14:
-        print(f'MISSING FILES: expected 14, found {len(files)}')
-        print('Present:', [f for f,_ in files])
-    sys.exit(1)
+Usage::
+
+    from app.planner import PlannerManager, Goal
+    from app.planner import GoalParser, TaskDecomposer, PlanGenerator
+    from app.planner import DependencyGraph, ConstraintSolver
+    from app.planner import PlanOptimizer, PlanValidator, ExecutionPlanner
+"""
+
+# ---------------------------------------------------------------------------
+# Shared types
+# ---------------------------------------------------------------------------
+from app.planner.types import (
+    Constraint,
+    ConstraintType,
+    ExecutionMode,
+    ExecutionPlan,
+    ExecutionStep,
+    Goal,
+    ParsedGoal,
+    PlanMetadata,
+    PlanningMetrics,
+    PlanValidationResult,
+    SuccessCriterion,
+    Task,
+    TaskDependency,
+    TaskPriority,
+    TaskStatus,
+    TaskType,
+    ValidationIssue,
+    ValidationSeverity,
+)
+
+# ---------------------------------------------------------------------------
+# Exceptions
+# ---------------------------------------------------------------------------
+from app.planner.exceptions import (
+    ConstraintViolationError,
+    DependencyCycleError,
+    EmptyPlanError,
+    ExecutionPlanningError,
+    GoalParsingError,
+    InvalidPlanError,
+    PlanGenerationError,
+    PlanningError,
+    PlanOptimizationError,
+    PlanValidationError,
+    TaskDecompositionError,
+    UnresolvableDependencyError,
+)
+
+# ---------------------------------------------------------------------------
+# Interfaces
+# ---------------------------------------------------------------------------
+from app.planner.interfaces import (
+    IConstraintSolver,
+    IDependencyGraph,
+    IExecutionPlanner,
+    IGoalParser,
+    IPlanGenerator,
+    IPlanOptimizer,
+    IPlanValidator,
+    ITaskDecomposer,
+)
+
+# ---------------------------------------------------------------------------
+# Base
+# ---------------------------------------------------------------------------
+from app.planner.base import BasePlanner
+
+# ---------------------------------------------------------------------------
+# Components
+# ---------------------------------------------------------------------------
+from app.planner.goal_parser import GoalParser
+from app.planner.task_decomposer import TaskDecomposer
+from app.planner.dependency_graph import DependencyGraph
+from app.planner.constraint_solver import ConstraintSolver
+from app.planner.plan_generator import PlanGenerator
+from app.planner.plan_optimizer import PlanOptimizer
+from app.planner.plan_validator import PlanValidator
+from app.planner.execution_planner import ExecutionPlanner
+
+# ---------------------------------------------------------------------------
+# Orchestrator
+# ---------------------------------------------------------------------------
+from app.planner.planner_manager import PlannerManager
+
+# ---------------------------------------------------------------------------
+# Public API
+# ---------------------------------------------------------------------------
+__all__ = [
+    # Types
+    "TaskStatus",
+    "TaskPriority",
+    "TaskType",
+    "ExecutionMode",
+    "ConstraintType",
+    "ValidationSeverity",
+    "Goal",
+    "Constraint",
+    "SuccessCriterion",
+    "ParsedGoal",
+    "TaskDependency",
+    "Task",
+    "ExecutionStep",
+    "PlanMetadata",
+    "ExecutionPlan",
+    "ValidationIssue",
+    "PlanValidationResult",
+    "PlanningMetrics",
+    # Exceptions
+    "PlanningError",
+    "GoalParsingError",
+    "TaskDecompositionError",
+    "PlanGenerationError",
+    "DependencyCycleError",
+    "ConstraintViolationError",
+    "InvalidPlanError",
+    "PlanOptimizationError",
+    "PlanValidationError",
+    "ExecutionPlanningError",
+    "UnresolvableDependencyError",
+    "EmptyPlanError",
+    # Interfaces
+    "IGoalParser",
+    "ITaskDecomposer",
+    "IPlanGenerator",
+    "IPlanOptimizer",
+    "IDependencyGraph",
+    "IConstraintSolver",
+    "IExecutionPlanner",
+    "IPlanValidator",
+    # Base
+    "BasePlanner",
+    # Components
+    "GoalParser",
+    "TaskDecomposer",
+    "DependencyGraph",
+    "ConstraintSolver",
+    "PlanGenerator",
+    "PlanOptimizer",
+    "PlanValidator",
+    "ExecutionPlanner",
+    # Orchestrator
+    "PlannerManager",
+]
