@@ -40,4 +40,3 @@ else:
         print(f'MISSING FILES: expected 14, found {len(files)}')
         print('Present:', [f for f,_ in files])
     sys.exit(1)
-"
