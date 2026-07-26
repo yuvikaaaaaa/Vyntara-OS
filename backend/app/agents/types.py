@@ -5,7 +5,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
 from typing import Any
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 
 # ---------------------------------------------------------------------------
@@ -74,8 +74,8 @@ class MessageType(str, Enum):
 
 @dataclass
 class AgentTask:
-    """A unit of work assigned to an agent (mirrors planner.types.Task fields
-    the agent layer cares about, decoupled from the Planning Engine's own type)."""
+    """A unit of work assigned to an agent (decoupled from the Planning
+    Engine's own Task type; mirrors the fields the agent layer needs)."""
     id: str = field(default_factory=lambda: str(uuid4()))
     name: str = ""
     description: str = ""
