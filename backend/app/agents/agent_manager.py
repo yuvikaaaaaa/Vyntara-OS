@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from uuid import UUID
 
-from app.agents.agent_context import AgentContextBuilder, ExecutionContext
+from app.agents.agent_context import AgentContextBuilder
 from app.agents.base import BaseAgentComponent
 from app.agents.exceptions import AgentError
 from app.agents.interfaces import (

@@ -5,7 +5,7 @@ from app.agents.agent_registry import AgentRegistry
 from app.agents.base import BaseAgentComponent
 from app.agents.exceptions import NoAgentAvailableError
 from app.agents.interfaces import IAgent, IAgentSelector
-from app.agents.types import AgentHealth, AgentStatus, AgentTask
+from app.agents.types import AgentStatus, AgentTask
 
 
 class AgentSelector(BaseAgentComponent, IAgentSelector):

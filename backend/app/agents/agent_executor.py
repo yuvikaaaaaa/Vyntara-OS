@@ -5,7 +5,7 @@ import asyncio
 from datetime import datetime, timezone
 
 from app.agents.base import BaseAgentComponent
-from app.agents.exceptions import AgentCancelledError, AgentExecutionError, AgentTimeoutError
+from app.agents.exceptions import AgentTimeoutError
 from app.agents.interfaces import IAgent, IAgentExecutor
 from app.agents.types import AgentExecution, AgentResult, AgentTask, ExecutionStatus
 

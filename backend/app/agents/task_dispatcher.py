@@ -6,7 +6,6 @@ import asyncio
 from app.agents.agent_registry import AgentRegistry
 from app.agents.agent_selector import AgentSelector
 from app.agents.base import BaseAgentComponent
-from app.agents.exceptions import MaxRetriesExceededError, TaskDispatchError
 from app.agents.interfaces import IAgentExecutor, ITaskDispatcher
 from app.agents.types import AgentResult, AgentTask, ExecutionStatus
 
