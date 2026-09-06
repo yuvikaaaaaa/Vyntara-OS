@@ -289,16 +289,6 @@ The Agent Engine communicates with other subsystems through interfaces and depen
 Vyntara OS includes a dedicated tool execution framework for allowing agents to interact with external systems.
 
 The framework provides:
-
-Tool registration
-Tool discovery
-Tool selection
-Tool validation
-Tool execution
-Tool sandboxing
-Tool result handling
-Tool lifecycle management
-Structured tool errors
 ```bash
 Agent
   │
@@ -437,6 +427,7 @@ python -m ruff check .
 The goal is to keep every architectural milestone import-safe, syntactically valid, and maintainable before moving to the next subsystem.
 
 # 🧰 Technology Stack
+```
 Backend
 Python
 FastAPI
@@ -476,6 +467,7 @@ Interface-driven design
 Async-first programming
 Structured logging
 Automated validation
+```
 
 # 🚀 Local Development
 
