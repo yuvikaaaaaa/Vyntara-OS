@@ -1,14 +1,13 @@
 """IOS Tools Plugins — Filesystem Tool."""
 from __future__ import annotations
 
-import os
 from pathlib import Path
 from typing import Any
 
 import aiofiles
 import aiofiles.os as aio_os
 
-from app.core.constants import TOOL_FS_READ, TOOL_FS_WRITE, UPLOAD_STORAGE_PATH
+from app.core.constants import TOOL_FS_READ, UPLOAD_STORAGE_PATH
 from app.tools.exceptions import ToolExecutionError, ToolValidationError
 from app.tools.plugins.base_tool import BaseToolPlugin
 from app.tools.types import ToolCapability, ToolMetadata, ToolType

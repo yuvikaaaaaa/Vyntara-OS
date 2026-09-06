@@ -1,7 +1,6 @@
 """IOS Tools — Tool Registry."""
 from __future__ import annotations
 
-from datetime import datetime, timezone
 
 from app.tools.base import BaseToolComponent
 from app.tools.exceptions import ToolAlreadyRegisteredError, ToolNotFoundError

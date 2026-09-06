@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from app.tools.base import BaseToolComponent
-from app.tools.exceptions import NoToolAvailableError, ToolError, ToolNotFoundError
+from app.tools.exceptions import NoToolAvailableError, ToolError
 from app.tools.interfaces import (
     IToolExecutor,
     IToolManager,

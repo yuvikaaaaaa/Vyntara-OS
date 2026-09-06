@@ -6,7 +6,7 @@ from typing import Any
 
 from app.tools.base import BaseToolComponent
 from app.tools.exceptions import ToolError
-from app.tools.types import ToolExecution, ToolResponse, ToolStatus
+from app.tools.types import ToolExecution, ToolResponse
 
 
 class ToolResult(BaseToolComponent):
