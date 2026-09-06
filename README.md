@@ -74,6 +74,7 @@ Vyntara OS follows a layered architecture built around **Clean Architecture, SOL
                         │ Working / Episodic /      │
                         │ Semantic Memory           │
                         └───────────────────────────┘
+```
 
 # 🏗️ Architecture Principles
 
