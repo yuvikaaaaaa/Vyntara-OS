@@ -170,6 +170,7 @@ Hallucination checking
 Response validation
 Response building
 Pipeline orchestration
+```bash
 Query
   │
   ▼
@@ -192,6 +193,7 @@ Citation Management
   │
   ▼
 Validated Response
+```
 
 The goal is to make generated responses more grounded, traceable, and reliable.
 
@@ -210,6 +212,7 @@ Plan optimization
 Plan validation
 Execution planning
 Planner management
+```bash
 User Goal
    │
    ▼
@@ -235,6 +238,7 @@ Plan Validator
    │
    ▼
 Execution Plan
+```
 
 This allows Vyntara OS to reason about multi-step objectives before execution begins.
 
@@ -254,6 +258,7 @@ Agent-to-agent communication
 Execution monitoring
 Agent coordination
 Agent lifecycle management
+```bash
 Execution Plan
       │
       ▼
@@ -275,6 +280,7 @@ Execution Monitor
       │
       ▼
 Agent Coordinator
+```
 
 The Agent Engine communicates with other subsystems through interfaces and dependency injection rather than accessing their internal implementation details.
 
@@ -293,6 +299,7 @@ Tool sandboxing
 Tool result handling
 Tool lifecycle management
 Structured tool errors
+```bash
 Agent
   │
   ▼
@@ -313,6 +320,7 @@ Tool Manager
           │
           ▼
       Tool Result
+```
 
 
 # 🌐 API Layer
@@ -320,7 +328,7 @@ Tool Manager
 The FastAPI interface layer is being built as the external application boundary for Vyntara OS.
 
 Its responsibility is intentionally limited to:
-
+```bash
 HTTP Request
      │
      ▼
@@ -337,12 +345,13 @@ Response Schema
      │
      ▼
 HTTP Response
-
+```
 
 # 🔄 End-to-End Agentic Execution
 
 The intended end-to-end execution flow is:
 
+```bash
                     User Goal
                        │
                        ▼
@@ -376,92 +385,9 @@ The intended end-to-end execution flow is:
                        │
                        ▼
                      User
+```
 
 This architecture enables the system to move beyond simple prompt-response interaction toward goal-oriented, multi-step, tool-using AI execution.
-
-# 📁 Repository Structure
-backend/
-└── app/
-    ├── core/
-    ├── database/
-    ├── models/
-    ├── schemas/
-    ├── repositories/
-    ├── services/
-    │
-    ├── ai_core/
-    ├── memory/
-    ├── knowledge/
-    ├── retrieval/
-    ├── rag/
-    ├── planner/
-    ├── agents/
-    ├── tools/
-    │   └── plugins/
-    │
-    └── api/
-
-Each subsystem owns a clearly defined responsibility and exposes public interfaces for interaction with other layers.
-
-# 🧱 Backend Architecture
-
-The backend is organized into distinct layers:
-
-Layer	Responsibility
-Core	Configuration, foundational abstractions and shared infrastructure
-Database	Database configuration and infrastructure
-Models	Persistence/domain models
-Schemas	Typed application contracts
-Repositories	Data access abstraction
-Services	Application-level business services
-AI Core	LLM and AI abstractions
-Memory	Short-term and long-term memory
-Knowledge	Structured knowledge management
-Retrieval	Relevant information retrieval
-RAG	Grounded generation pipeline
-Planner	Goal decomposition and execution planning
-Agents	Agent orchestration and execution
-Tools	Tool lifecycle and execution
-Plugins	Concrete tool implementations
-API	External HTTP interface
-
-# ⚙️ Engineering Philosophy
-
-Vyntara OS is being developed with a strong focus on software engineering quality rather than only model capabilities.
-
-Key principles include:
-
-Separation of Concerns
-
-Every subsystem has a focused responsibility.
-
-Dependency Inversion
-
-High-level components depend on abstractions rather than concrete implementations.
-
-Interface-Driven Communication
-
-Subsystems interact through explicit contracts.
-
-Constructor Dependency Injection
-
-Dependencies are supplied externally instead of being created deep inside business logic.
-
-Async-First Design
-
-Long-running and I/O-heavy operations are designed around asynchronous execution.
-
-Extensibility
-
-New models, agents, retrieval strategies, memory implementations, and tools can be added without rewriting the orchestration layer.
-
-Testability
-
-Components are designed so implementations can be replaced with mocks, fakes, or alternative providers.
-
-Observability
-
-Structured logging, tracing, metrics, request context, and execution monitoring are considered first-class architectural concerns.
 
 # 🔐 Security Considerations
 
