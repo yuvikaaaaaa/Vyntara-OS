@@ -76,26 +76,8 @@ Vyntara OS follows a layered architecture built around **Clean Architecture, SOL
                         └───────────────────────────┘
 ```
 
-# 🏗️ Architecture Principles
 
-Vyntara OS is designed around the following engineering principles:
-
-Clean Architecture
-SOLID principles
-Dependency Inversion
-Interface-driven design
-Constructor Dependency Injection
-Async-first execution
-Separation of concerns
-Low coupling / high cohesion
-Framework-independent core logic
-Structured error handling
-Observability-first design
-Explicit contracts between subsystems
-
-Core modules communicate through interfaces rather than directly accessing internal implementation details.
-
-🤖 AI Core
+# 🤖 AI Core
 
 The AI Core provides the foundation for LLM-powered reasoning and generation.
 
@@ -332,35 +314,6 @@ Tool Manager
           ▼
       Tool Result
 
-Agents interact with tools through the Tool Manager rather than directly instantiating or controlling individual plugins.
-
-🔌 Built-in Tool Plugins
-
-Vyntara OS currently includes reusable built-in tool plugins for common system interactions.
-
-Filesystem Tool
-
-Provides controlled filesystem operations.
-
-HTTP Tool
-
-Provides HTTP-based external communication.
-
-Python Tool
-
-Provides controlled Python execution capabilities.
-
-Shell Tool
-
-Provides controlled command-line execution.
-
-Database Tool
-
-Provides database interaction capabilities.
-
-The plugin architecture allows additional tools to be added without modifying the core Agent Engine.
-
-Tool execution involving Python, shell commands, filesystem access, databases, or external systems must be constrained by appropriate sandboxing, permissions, validation, and execution policies in production deployments.
 
 # 🌐 API Layer
 
@@ -385,57 +338,8 @@ Response Schema
      ▼
 HTTP Response
 
-The API layer will not contain:
 
-Business logic
-Database queries
-Repository implementation logic
-LLM orchestration
-Planning algorithms
-Agent orchestration
-Retrieval algorithms
-RAG algorithms
-Tool execution logic
-
-The API will expose the existing backend capabilities through structured HTTP interfaces.
-
-Planned API organization:
-
-backend/app/api/
-├── __init__.py
-├── app.py
-│
-├── dependencies/
-│   ├── __init__.py
-│   └── common.py
-│
-├── middleware/
-│   ├── __init__.py
-│   ├── request_context.py
-│   └── error_handler.py
-│
-├── routers/
-│   ├── __init__.py
-│   ├── health.py
-│   ├── conversations.py
-│   ├── knowledge.py
-│   ├── memory.py
-│   ├── agents.py
-│   └── tools.py
-│
-└── v1/
-    ├── __init__.py
-    └── router.py
-
-Planned API areas include:
-
-Health and readiness
-Conversations
-Knowledge
-Memory
-Agents
-Tools
-🔄 End-to-End Agentic Execution
+# 🔄 End-to-End Agentic Execution
 
 The intended end-to-end execution flow is:
 
